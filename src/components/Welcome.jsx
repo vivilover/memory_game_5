@@ -21,7 +21,9 @@ const Welcome = ({ handleStateChange }) => {
     <>
       <div>Elegar:</div>
       <Wrapper>
-        <Button onClick={() => handleStateChange("facil")}>facil</Button>
+        <Button onClick={() => handleStateChange("facil")}>
+          facil
+        </Button>
         <Button onClick={() => handleStateChange("intermedia")}>
           intermedia
         </Button>

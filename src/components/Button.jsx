@@ -11,8 +11,8 @@ const Wrapper = styled.button`
   border-radius: 5px;
 `;
 
-const Button = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+const Button = ({ children, handleStateChange }) => {
+  return <Wrapper onClick={() => handleStateChange('main')}>{children}</Wrapper>;
 };
 
 export default Button;

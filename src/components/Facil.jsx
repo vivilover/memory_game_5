@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Image from './Image.jsx';
 import Button from './Button.jsx';
 
-const Facil = () => {
+const Facil = ({ handleStateChange }) => {
     const [images, setImages] = useState([]);
     useEffect(() => {
       Promise.all([
@@ -29,7 +29,7 @@ const Facil = () => {
   
     return (
       <>
-        <Button>Volver a Principal</Button>
+        <Button handleStateChange={handleStateChange}>Volver a Principal</Button>
         <div>Facil Playboard</div>
         <div>
           {images && (
