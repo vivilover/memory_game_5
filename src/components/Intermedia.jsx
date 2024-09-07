@@ -1,8 +1,14 @@
+import Button from "./Button";
 
-const Intermedia = () => {
-    return (
-        <div>Intermedia</div>
-    )
-}
+const Intermedia = ({ handleStateChange }) => {
+  return (
+    <>
+      <Button handleStateChange={handleStateChange}>
+        Volver a Principal
+      </Button>
+      <div>Intermedia</div>
+    </>
+  );
+};
 
 export default Intermedia;
