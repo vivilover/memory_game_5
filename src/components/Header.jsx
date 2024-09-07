@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
 const Header = () => {
-  const [score, setScore] = useState(0);
+  const [currScore, setCurrScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   return (
     <header>
-      <h1>Memory Game - 5th try</h1>
-      <div>Score: {score}</div>
+      <div>Memory Lorem Ipsum Images</div>
+      <div>Puntaje: {currScore}</div>
+      <div>Alta puntaje: {highScore}</div>
     </header>
   );
 }
