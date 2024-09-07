@@ -5,8 +5,8 @@ const Wrapper = styled.img`
   height: 150px;
 `;
 
-const Image = ({ imageUrl }) => {
-  return <Wrapper src={imageUrl} />;
+const Image = ({ imageUrl, handleClick }) => {
+  return <Wrapper src={imageUrl} onClick={handleClick} />;
 };
 
 export default Image;
