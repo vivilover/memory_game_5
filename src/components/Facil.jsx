@@ -4,6 +4,8 @@ import Button from "./Button.jsx";
 import ImageContainer from "./ImageContainer.jsx";
 import { shuffle } from '../utils/util.js';
 
+// picsum.photos to use
+// id: 40, 152, 169, 189, 200, 213, 219, 225, 231, 237, 309,416,384, 433, 512
 // for each click on the image, tell if duplicates are clicked
 // shuffle images after clicks
 // increase score if new images clicked
@@ -19,20 +21,24 @@ import { shuffle } from '../utils/util.js';
  * If clicked: true is clicked, show that game is over
  * If clicked: false is clicked, change clicked: true and shuffle the image
  */
-const Facil = ({ handleStateChange }) => {
+const Facil = ({ handleStateChange, setCurrScore, setHighScore }) => {
+  // images is an array of objects
   const [images, setImages] = useState([]);
 
-  const handleClick = (e) => {
-    console.log(e);
-    // e.target.style.visibility = "hidden";
+  const handleClick = (targetId) => {
+    console.log(targetId);
+    const targetImg = images.find(img => img.id === targetId);
+    console.log(targetImg);
+    setCurrScore(currScore => currScore + 1);
+    // if ()
   }
   useEffect(() => {
     Promise.all([
-      fetch("https://picsum.photos/id/257/150/150"),
-      fetch("https://picsum.photos/id/247/150/150"),
-      fetch("https://picsum.photos/id/100/150/150"),
-      fetch("https://picsum.photos/id/110/150/150"),
-      fetch("https://picsum.photos/id/101/150/150"),
+      fetch("https://picsum.photos/id/40/150/150"),
+      fetch("https://picsum.photos/id/152/150/150"),
+      fetch("https://picsum.photos/id/169/150/150"),
+      fetch("https://picsum.photos/id/309/150/150"),
+      fetch("https://picsum.photos/id/219/150/150"),
     ])
       .then((responses) => {
         return Promise.all(
@@ -69,7 +75,7 @@ const Facil = ({ handleStateChange }) => {
               <Image
                 imageUrl={imgObj.picUrl}
                 key={imgObj.id}
-                handleClick={handleClick}
+                handleClick={() => handleClick(imgObj.id)}
               />
             ))}
           </ImageContainer>
