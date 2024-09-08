@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "./Image.jsx";
 import Button from "./Button.jsx";
+import ImageContainer from "./ImageContainer.jsx";
 import { shuffle } from '../utils/util.js';
 
 // for each click on the image, tell if duplicates are clicked
@@ -9,10 +10,22 @@ import { shuffle } from '../utils/util.js';
 // set score to 0 if duplicate is clicked
 // if max score is reached:
 //    POPUP: ask user to play again OR go back to main
+
+/**
+ * What I have: shuffle algorithm
+ * What I don't have: how to shuffle the state and show it to the user
+ * Needs to be displayed only once, and not continue shuffling
+ * When user clicks, { clicked: false -> true }
+ * If clicked: true is clicked, show that game is over
+ * If clicked: false is clicked, change clicked: true and shuffle the image
+ */
 const Facil = ({ handleStateChange }) => {
-  const arr = [1, 2, 3, 4, 5];
-  console.log(shuffle(arr));
   const [images, setImages] = useState([]);
+
+  const handleClick = (e) => {
+    console.log(e);
+    // e.target.style.visibility = "hidden";
+  }
   useEffect(() => {
     Promise.all([
       fetch("https://picsum.photos/id/257/150/150"),
@@ -28,11 +41,15 @@ const Facil = ({ handleStateChange }) => {
           })
         );
       })
-      .then((data) => {
+      .then((data) => { // data is an array of Response objects
         let pics = [];
-        for (const picData of data) {
-          const pic = picData.url;
-          pics.push(pic);
+        for (let idx = 0; idx < data.length; idx++) {
+          const picObj = {
+            id: idx,
+            picUrl: data[idx].url,
+            clicked: false,
+          }
+          pics.push(picObj);
         }
         setImages(pics);
       })
@@ -47,15 +64,15 @@ const Facil = ({ handleStateChange }) => {
       <div>Facil Playboard</div>
       <div>
         {images && (
-          <>
-            {images.map((imgSrc, idx) => (
+          <ImageContainer>
+            {images.map((imgObj) => (
               <Image
-                imageUrl={imgSrc}
-                key={idx}
-                handleClick={() => console.log("clicked img")}
+                imageUrl={imgObj.picUrl}
+                key={imgObj.id}
+                handleClick={handleClick}
               />
             ))}
-          </>
+          </ImageContainer>
         )}
       </div>
     </>
