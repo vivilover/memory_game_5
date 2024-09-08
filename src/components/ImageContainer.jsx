@@ -5,9 +5,9 @@ const Wrapper = styled.div`
   gap: 15px;
 `
 
-const ImageContainer = ({children}) => {
+const ImageContainer = ({children, handleClick}) => {
   return (
-    <Wrapper>{children}</Wrapper>
+    <Wrapper onClick={handleClick}>{children}</Wrapper>
   )
 }
 
