@@ -24,6 +24,8 @@ function App() {
           handleStateChange={onEstadoChange}
           setCurrScore={setCurrScore}
           setHighScore={setHighScore}
+          currScore={currScore}
+          highScore={highScore}
         />
       ) : estado === 'intermedia' ? (
         <Intermedia
