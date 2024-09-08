@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import PlayBoard from "./components/PlayBoard";
 import Welcome from "./components/Welcome";
 import Facil from "./components/Facil";
 import Intermedia from "./components/Intermedia";
