@@ -8,10 +8,6 @@ import { shuffle } from '../utils/util.js';
 // picsum.photos to use
 // id: 40, 152, 169, 189, 200, 213, 219, 225, 231, 237, 309,416,384, 433, 512
 
-// if max score is reached:
-//    POPUP: ask user to play again OR go back to main
-
-// where to put showModal state? put it in each difficulty component!
 const Facil = ({
   handleStateChange,
   currScore,
@@ -23,24 +19,32 @@ const Facil = ({
   const [images, setImages] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
+  const resetClickProperty = () => {
+    for (let idx = 0; idx < images.length; idx++) {
+      images[idx].clicked = false;
+    }
+  }
+  const replay = () => {
+    resetClickProperty();
+    setCurrScore(0);
+  }
   const handleClick = (targetId) => {
     const targetImg = images.find((img) => img.id === targetId);
+    const scoreToClearStage = images.length;
     if (!targetImg.clicked) {
-      if (highScore === currScore) {
-        setHighScore(score => score + 1);
+      if (highScore === currScore && highScore < images.length) {
+        setHighScore((score) => score + 1);
       }
-      setCurrScore(score => score + 1);
+      setCurrScore((score) => score + 1);
       targetImg.clicked = true;
       const shuffledImages = shuffle(images);
       setImages(shuffledImages);
-      if (currScore + 1 === highScore) {
+      if (currScore + 1 === scoreToClearStage) {
         console.log('you cleared Facil stage!');
         setShowModal(true);
       }
     } else {
-      for(let idx = 0; idx < images.length; idx++) {
-        images[idx].clicked = false;
-      }
+      resetClickProperty();
       const shuffledImages = shuffle(images);
       setImages(shuffledImages);
       setCurrScore(0);
@@ -82,7 +86,12 @@ const Facil = ({
   return (
     <>
       <div>
-        <ReplayModal showModal={showModal} setShowModal={setShowModal} />
+        <ReplayModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          handleStateChange={handleStateChange}
+          replay={replay}
+        />
       </div>
       <Button handleStateChange={handleStateChange}>
         Volver a Principal

@@ -1,16 +1,25 @@
 import { createPortal } from 'react-dom';
 import ModalContent from './ModalContent.jsx';
 
-const ReplayModal = ({ showModal, setShowModal }) => {
+const ReplayModal = ({
+  showModal,
+  setShowModal,
+  handleStateChange,
+  replay
+}) => {
   return (
-    <> 
-      {/* <button onClick={() => setShowModal(true)}>Show Modal thru Portal</button> */}
-      {showModal && createPortal(
-        <ModalContent onClose={() => setShowModal(false)} />,
-        document.body
-      )}
+    <>
+      {showModal &&
+        createPortal(
+          <ModalContent
+            onClose={() => setShowModal(false)}
+            handleStateChange={handleStateChange}
+            replay={replay}
+          />,
+          document.body
+        )}
     </>
-  )
-}
+  );
+};
 
 export default ReplayModal;
