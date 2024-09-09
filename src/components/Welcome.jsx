@@ -19,7 +19,7 @@ const Button = styled.div`
 const Welcome = ({ handleStateChange }) => {
   return (
     <>
-      <div>Elegar:</div>
+      <div>Elegir:</div>
       <Wrapper>
         <Button onClick={() => handleStateChange("facil")}>
           facil
