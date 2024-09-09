@@ -9,7 +9,7 @@ const BackgroundWrapper = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgba(144, 198, 149, 0.4);
-`
+`;
 const ModalWrapper = styled.div`
   background-color: rgba(210, 215, 211, 0.9);
   margin: 20% auto;
@@ -20,28 +20,37 @@ const ModalWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-`
+`;
 const Button = styled.button`
   width: 10em;
   height: 3em;
   font-size: 1.4em;
-`
+`;
 const Message = styled.div`
   flex: 1 0 100%;
   font-size: 1.8em;
   text-align: center;
-`
+`;
 
-const ModalContent = ({ onClose }) => {
+const ModalContent = ({ onClose, handleStateChange, replay }) => {
   return (
     <BackgroundWrapper>
       <ModalWrapper>
         <Message>You cleared this stage! Now choose: </Message>
-        <Button onClick={onClose}>repetición</Button>
-        <Button onClick={onClose}>volver a main</Button>
+        <Button
+          onClick={() => {
+            replay();
+            onClose();
+          }}
+        >
+          repetición
+        </Button>
+        <Button onClick={() => handleStateChange('main')}>
+          volver a main
+        </Button>
       </ModalWrapper>
     </BackgroundWrapper>
-  )
-}
+  );
+};
 
 export default ModalContent;
