@@ -7,9 +7,11 @@ import { shuffle } from '../utils/util.js';
 
 // picsum.photos to use
 // id: 40, 152, 169, 189, 200, 213, 219, 225, 231, 237, 309,416,384, 433, 512
+
 // if max score is reached:
 //    POPUP: ask user to play again OR go back to main
 
+// where to put showModal state? put it in each difficulty component!
 const Facil = ({
   handleStateChange,
   currScore,
@@ -19,6 +21,7 @@ const Facil = ({
 }) => {
   // images is an array of objects
   const [images, setImages] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleClick = (targetId) => {
     const targetImg = images.find((img) => img.id === targetId);
@@ -32,6 +35,7 @@ const Facil = ({
       setImages(shuffledImages);
       if (currScore + 1 === highScore) {
         console.log('you cleared Facil stage!');
+        setShowModal(true);
       }
     } else {
       for(let idx = 0; idx < images.length; idx++) {
@@ -77,11 +81,13 @@ const Facil = ({
 
   return (
     <>
+      <div>
+        <ReplayModal showModal={showModal} setShowModal={setShowModal} />
+      </div>
       <Button handleStateChange={handleStateChange}>
         Volver a Principal
       </Button>
       <div>Facil Playboard</div>
-      <div>Show Pop up!</div>
       <div>
         {images && (
           <ImageContainer>

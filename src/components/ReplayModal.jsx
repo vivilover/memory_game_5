@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import { createPortal } from 'react-dom';
+import ModalContent from './ModalContent.jsx';
 
-const Wrapper = styled.div`
-  display: inline-flexbox;
-`
-
-const ReplayModal = () => {
+const ReplayModal = ({ showModal, setShowModal }) => {
   return (
-    <Wrapper>
-      <button>repetición</button>
-      <button>volver a principal</button>
-    </Wrapper>
+    <> 
+      {/* <button onClick={() => setShowModal(true)}>Show Modal thru Portal</button> */}
+      {showModal && createPortal(
+        <ModalContent onClose={() => setShowModal(false)} />,
+        document.body
+      )}
+    </>
   )
 }
 
