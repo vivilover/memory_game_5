@@ -8,7 +8,7 @@ import { shuffle } from '../utils/util.js';
 // picsum.photos to use
 // id: 40, 152, 169, 189, 200, 213, 219, 225, 231, 237, 309,416,384, 433, 512
 
-const Facil = ({
+const Easy = ({
   handleStateChange,
   currScore,
   setCurrScore,
@@ -94,9 +94,9 @@ const Facil = ({
         />
       </div>
       <Button handleStateChange={handleStateChange}>
-        Volver a Principal
+        Back to Main
       </Button>
-      <div>Facil Playboard</div>
+      <div>Easy Playboard</div>
       <div>
         {images && (
           <ImageContainer>
@@ -114,4 +114,4 @@ const Facil = ({
   );
 };
 
-export default Facil;
+export default Easy;

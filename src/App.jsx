@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import Welcome from './components/Welcome';
-import Facil from './components/Facil';
-import Intermedia from './components/Intermedia';
+import Easy from './components/Easy';
+import Intermediate from './components/Intermediate';
 import Deficil from './components/Deficil';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       {estado === 'main' ? (
         <Welcome handleStateChange={onEstadoChange} />
       ) : estado === 'facil' ? (
-        <Facil
+        <Easy
           handleStateChange={onEstadoChange}
           setCurrScore={setCurrScore}
           setHighScore={setHighScore}

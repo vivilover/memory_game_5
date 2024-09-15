@@ -13,21 +13,21 @@ const Button = styled.div`
   background-color: #04aa6d;
   color: white;
   text-align: center;
-  font-size: 16px;
+  font-size: 1.7em;
 `;
 
 const Welcome = ({ handleStateChange }) => {
   return (
     <>
-      <div>Elegir:</div>
+      <div>Choose Difficulty:</div>
       <Wrapper>
         <Button onClick={() => handleStateChange("facil")}>
-          facil
+          Easy
         </Button>
         <Button onClick={() => handleStateChange("intermedia")}>
-          intermedia
+          Intermediate
         </Button>
-        <Button onClick={() => handleStateChange("deficil")}>deficil</Button>
+        <Button onClick={() => handleStateChange("deficil")}>Hard</Button>
       </Wrapper>
     </>
   );

@@ -18,8 +18,8 @@ const Header = ({ currScore, highScore }) => {
     <HeaderWrapper>
       <div>Memory Lorem Ipsum</div>
       <ScoreContainer>
-        <div>Puntajee: {currScore}</div>
-        <div>Alta puntaje: {highScore}</div>
+        <div>Score: {currScore}</div>
+        <div>High Score: {highScore}</div>
       </ScoreContainer>
     </HeaderWrapper>
   );
