@@ -43,10 +43,10 @@ const ModalContent = ({ onClose, handleStateChange, replay }) => {
             onClose();
           }}
         >
-          repetición
+          Replay
         </Button>
         <Button onClick={() => handleStateChange('main')}>
-          volver a main
+          Back to Main
         </Button>
       </ModalWrapper>
     </BackgroundWrapper>
